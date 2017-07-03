@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Steem.js</title>
+</head>
+<body>
+<script src="//cdn.steemjs.com/lib/latest/steem.min.js"></script>
+
+<p>Feed do utilizador xpto</p>
+<ul id="result"></ul>
+
+<p>Repostas aos comentários do post xpto</p>
+<ul id="result2"></ul>
+
+<script>
+<!--Feed do utilizador xpto-->
+var ul = document.getElementById('result');
+
+var query = {
+	tag: 'bycz',
+  limit: 20
+};
+
+steem.api.getDiscussionsByFeed(query, function (err, discussions) {
+  console.log(err, discussions);
+  if (!err) {
+    discussions.map(function (discussion) {
+      var li = document.createElement('li');
+  		li.innerHTML = 'https://steemit.com/' + discussion.category + '/@' + discussion.author + '/' + discussion.permlink;
+  		ul.appendChild(li);
+    });
+  }
+});
+</script>
+
+<script>
+<!--Respostas ao comentário xpto-->
+var ul = document.getElementById('result2');
+
+steem.api.getContent('papa-pepper', 'steem-pocalypse-survival-game-contest-season-4-sign-up-100-sbd-already-in-the-prize-pool', function(err, result) {
+  console.log(err, result);
+<!--
+steem.api.getContentReplies(parent, 'steem-pocalypse-survival-game-contest-season-4-sign-up-100-sbd-already-in-the-prize-pool', function(err, result) {
+  console.log(err, result);
+});-->
+  if (err) {
+    discussions.map(function (err) {
+          var li = document.createElement('li');
+            li.innerHTML = result;
+            ul.appendChild(li);
+    });
+  }
+});
+</script>
+
+
+</body>
+</html>

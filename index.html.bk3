@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Steemit Game Engine</title>
+</head>
+<body>
+<script src="//cdn.steemjs.com/lib/latest/steem.min.js"></script>
+
+<p>Repostas aos comentários do post xpto</p>
+
+
+Link registo: <input type="text" id ="link" name="Link"><br>
+<input id="clickMe" type="button" value="Player registered" onclick="init_regist();" />
+
+<p> Links uteis </p>
+<p> https://steemit.com/steem-pocalypse/@papa-pepper/steem-pocalypse-survival-game-contest-season-4-sign-up-100-sbd-already-in-the-prize-pool </p>
+
+<p id="initest"></p>
+
+<p id="demo"></p>
+
+
+<!-- <ul id="result2"></ul> -->
+
+
+
+<script>
+
+<!--lista dos jogadores inscritos-->
+var ul = document.getElementById('result2');
+var author = "";
+var permlink = "";
+var players = [""];
+var nPlayers = 0;
+
+<!-- Funções -->
+
+<!-- construtor jogador -->
+function player(name,team, life, money, resources){
+        this.team = null; <!-- if null solo player; else is name of the team -->
+	this.name = name; <!-- lista de nomes jogadore(s)  -->
+        this.life = life;
+        this.money = money;
+        this.resources = resources; <!-- lista de  armas + utensilios  -->
+}
+
+<!-- verificar todos os comentários e sub-comentários recursivamente e submete os utilizadores para inscrição -->
+function ver_users_replies(author, link){
+	steem.api.getContentReplies(author, link, function(err, result) {
+        console.log(err, result);
+		if(result.length > 0){
+			for (x = 0  ; x < result.length ; x++){
+                   		register_player(result[x].author);
+				ver_users_replies(result[x].author,result[x].permlink);		
+			}
+		}
+
+
+	});
+}
+
+<!-- regista os jogadores e garante que não há repetidos -->
+function register_player(username){
+	
+	
+	if(ver_player(username)){
+		players.push(username);
+	}else{
+		console.log("User already registered!");
+	}
+
+	<!--var li = document.createElement('li');
+	li.innerHTML = username;
+	ul.appendChild(li);-->
+}
+
+<!-- verifica se jogador está na lista -->
+function ver_player(username){
+	for (i = 0; i < players.length; i++) { 
+    		if(players[i].name = username){
+		return false;
+		}
+	}
+	return true;
+}
+
+<!-- extrai do link do artigo o autor e o permlink-->
+function parse_link(link){
+	var at = link.indexOf("@");
+	var p = link.substring(at,at.length);
+
+	var slash = p.indexOf("/");
+	author = p.substring(1,slash);
+	permlink = p.substring(slash+1 , p.length); 
+	
+	<!-- ver_users_replies(author,permlink);-->
+
+}
+
+<!-- inicia o registo dos jogadores-->
+function init_regist(){
+
+parse_link(document.getElementById('link').value);
+
+if(ver_date(1)){	
+	ver_users_replies(author,permlink);
+	document.getElementById("demo").innerHTML = players.join(" * ");
+
+}else{
+console.log("Cannot register player, do not pass 24H since sign-up post!");
+}
+
+
+}
+
+<!-- verifica se o artigo foi criado à mais horas do que as passadas em atributo-->
+function ver_date(time){
+return true;
+<!--
+	steem.api.getContent(author, permlink, function(err, result) {
+		console.log(err, result);
+		
+		var release_time = new Date(); 		
+		console.log("post time: " + result.created);
+		console.log("release time: " + release_time.getDate());
+		var temp = release_time + 1;
+		console.log("temp: " + temp);
+		
+		if (result.created > new Date()-time){
+		return true;
+		}
+	return false;	
+	});
+-->
+
+}
+
+</script>
+
+
+</body>
+</html>

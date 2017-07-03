@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Steem.js</title>
+</head>
+<body>
+<script src="//cdn.steemjs.com/lib/latest/steem.min.js"></script>
+
+<p>Repostas aos comentários do post xpto</p>
+
+
+Username: <input type="text" id="username"  name="Username"><br>
+Link registo: <input type="text" id ="link" name="Link"><br>
+<input id="clickMe" type="button" value="Player registered" onclick="ver_users_replies(document.getElementById('username').value, document.getElementById('link').value);" />
+
+
+init_regist()
+<p> Links uteis </p>
+<p> https://steemit.com/steem-pocalypse/@papa-pepper/steem-pocalypse-survival-game-contest-season-4-sign-up-100-sbd-already-in-the-prize-pool </p>
+
+
+<ul id="result2"></ul>
+
+
+
+<script>
+
+<!--lista dos jogadores inscritos-->
+var ul = document.getElementById('result2');
+
+
+<!-- Funções -->
+
+<!-- construtor jogador -->
+function player(name, life, money, resources){
+        this.name = name;
+        this.life = life;
+        this.money = money;
+        this.resources = resources; <!-- armas + utensilios  -->
+}
+
+<!-- verificar todos os comentários e sub-comentários recursivamente e submete os utilizadores para inscrição -->
+function ver_users_replies(author, link){
+	steem.api.getContentReplies(author, link, function(err, result) {
+        console.log(err, result);
+	
+		if(result.length > 0){
+			for (x = 0  ; x < result.length ; x++){
+                   		register_player(result[x].author);
+				ver_users_replies(result[x].author,result[x].permlink);		
+			}
+		}
+
+
+	});
+}
+
+<!-- regista os jogadores e garante que não há repetidos -->
+function register_player(username){
+	
+	var li = document.createElement('li');
+	li.innerHTML = username;
+	ul.appendChild(li);
+
+}
+
+<!-- extrai do link do artigo o autor e o permlink-->
+function parse_link(link){
+	var at = link.indexOf("@");
+	var p = link.substring(at,at.length);
+
+	var slash = p.indexOf("/");
+	var author = p.substring(1,slash);
+	var permlink = p.substring(slash+1 , p.length); 
+}
+
+<!-- inicia o registo dos jogadores-->
+function init_regist(){
+
+parse_link(document.getElementById('link').value);
+ver_users_replies(author,permlink);
+
+}
+
+
+</script>
+
+
+</body>
+</html>
