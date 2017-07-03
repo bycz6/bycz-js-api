@@ -8,11 +8,11 @@ var nPlayers = 0;
 
 // construtor jogador
 function player(name,team, life, money, resources){
-	this.team = null; <!-- if null solo player; else is name of the team -->
-    this.name = name; <!-- lista de nomes jogadore(s)  -->
+	this.team = null; // if null solo player; else is name of the team
+    this.name = name; // lista de nomes jogadore(s)
     this.life = life;
     this.money = money;
-    this.resources = resources; <!-- lista de  armas + utensilios  -->
+    this.resources = resources; // lista de armas + utensilios
 }
 
 // verificar todos os comentários e sub-comentários recursivamente e submete os
@@ -38,6 +38,7 @@ function register_player(username){
 	if(ver_player(username)){
 		players.push(username);
 		nPlayers++;
+		console.log(username + " - Registado com sucesso!")
 	}else{
 		console.log("User already registered!");
 	}
@@ -46,9 +47,9 @@ function register_player(username){
 // verifica se jogador está na lista
 function ver_player(username){
 	for (i = 0; i < players.length; i++) { 
-    		if(players[i].name = username){
-		return false;
-		}
+    	if(players[i] == username){
+    		return false;
+   		}
 	}
 	return true;
 }
