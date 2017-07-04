@@ -1,4 +1,3 @@
-var ul = document.getElementById('result2');
 var author = "";
 var permlink = "";
 var players = [ "" ];
@@ -49,7 +48,7 @@ function ver_player(username) {
 	for (i = 0; i < players.length; i++) {
 		if (players[i] == username) {
 			return false;
-		}else if(players[i] == author){
+		} else if (players[i] == author) {
 			return false;
 		}
 	}
@@ -80,26 +79,32 @@ function init_regist() {
 	}
 }
 
-//verifica se o artigo foi criado à mais horas do que as passadas em
-//atributo-->
+// verifica se o artigo foi criado à mais horas do que as passadas em
+// atributo-->
 function show_report() {
-	document.getElementById("demo").innerHTML = players.toString();	
-	document.getElementById("initest").innerHTML = "Players registered: " + nPlayers;
+	document.getElementById("demo").innerHTML = players.toString();
+	document.getElementById("initest").innerHTML = "Players registered: "
+			+ nPlayers;
 }
 
 // verifica se o artigo foi criado à mais horas do que as passadas em
 // atributo-->
 function ver_date(time) {
-	return true;
-	/*
-	 * steem.api.getContent(author, permlink, function(err, result) {
-	 * console.log(err, result);
-	 * 
-	 * var release_time = new Date(); console.log("post time: " +
-	 * result.created); console.log("release time: " + release_time.getDate());
-	 * var temp = release_time + 1; console.log("temp: " + temp);
-	 * 
-	 * if (result.created > new Date()-time){ return true; } return false; });
-	 */
+	// return true;
+
+	steem.api.getContent(author, permlink, function(err, result) {
+		console.log(err, result);
+
+		var release_time = new Date();
+		console.log("post time: " + result.created);
+		console.log("release time: " + release_time.getDate());
+		var temp = release_time + 1;
+		console.log("temp: " + temp);
+
+		if (result.created > new Date() - time) {
+			return true;
+		}
+		return false;
+	});
 
 }
