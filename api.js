@@ -100,7 +100,7 @@ function ver_date(time) {
 		console.log("release time: " + release_time.getDate());
 		var temp = release_time + 1;
 		console.log("temp: " + temp);
-
+		return true;
 		if (result.created > new Date() - time) {
 			return true;
 		}
