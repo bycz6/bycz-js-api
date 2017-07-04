@@ -104,7 +104,7 @@ function ver_date(time) {
 		if (result.created > new Date() - time) {
 			return true;
 		}
-		return false;
+//		return false;
 	});
 
 }
