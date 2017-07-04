@@ -47,7 +47,7 @@ function ver_player(username) {
 		if (players[i] == username) {
 			console.log("User @" + username + " already registered!");
 			return false;
-		} else if (players[i] == pAuthor) {
+		} else if (username == pAuthor) {
 			console.log("User @" + username + " is the author of the game!");
 			return false;
 		}
