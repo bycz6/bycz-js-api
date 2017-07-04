@@ -33,7 +33,6 @@ function ver_users_replies(author, link) {
 
 // regista os jogadores e garante que não há repetidos
 function register_player(username) {
-
 	if (ver_player(username)) {
 		players.push(username);
 		nPlayers++;
@@ -53,6 +52,21 @@ function ver_player(username) {
 		}
 	}
 	return true;
+}
+
+// coloca as @ nos utilizadores, para ficarem prontos para colar
+function parse_user(username) {
+	return "@" + username + " - ";
+}
+
+// devolve a lista de jogadores passada em função embelezada
+function parse_players(list) {
+	var pPlayers = [ "" ];
+
+	for (x = 0; x < list.length; x++) {
+		pPlayers[x] = parse_user(list[x]);
+	}
+	return pPlayers;
 }
 
 // extrai do link do artigo o autor e o permlink
@@ -82,13 +96,14 @@ function init_regist() {
 // verifica se o artigo foi criado à mais horas do que as passadas em
 // atributo-->
 function show_report() {
-	document.getElementById("demo").innerHTML = players.toString();
+
+	document.getElementById("demo").innerHTML = parse_players(players);
 	document.getElementById("initest").innerHTML = "Players registered: "
 			+ nPlayers;
 }
 
 // verifica se o artigo foi criado à mais horas do que as passadas em
-// atributo-->
+// atributo
 function ver_date(time) {
 	return true;
 
