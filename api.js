@@ -45,13 +45,13 @@ function register_player(username) {
 
 // verifica se jogador está na lista
 function ver_player(username) {
-	for (i = 0; i < players.length; i++) {
-		if (players[i] == username) {
-			return false;
-		} else if (players[i] == author) {
-			return false;
-		}
+	// for (i = 0; i < players.length; i++) {
+	if (players[i] == username) {
+		return false;
+	} else if (players[i] == author) {
+		return false;
 	}
+	// }
 	return true;
 }
 
