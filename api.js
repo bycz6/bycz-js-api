@@ -72,7 +72,8 @@ function init_regist() {
 		if (ver_date(1)) { // não está a funcionar
 			ver_users_replies(author, permlink);
 		} else {
-			console.log("Cannot register player, do not pass 24H since sign-up post!");
+			console
+					.log("Cannot register player, do not pass 24H since sign-up post!");
 		}
 
 	}
@@ -89,7 +90,7 @@ function show_report() {
 // verifica se o artigo foi criado à mais horas do que as passadas em
 // atributo-->
 function ver_date(time) {
-	// return true;
+	return true;
 
 	steem.api.getContent(author, permlink, function(err, result) {
 		console.log(err, result);
