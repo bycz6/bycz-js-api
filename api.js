@@ -1,4 +1,4 @@
-var author = "";
+var pAuthor = "";
 var permlink = "";
 var players = [ "" ];
 var nPlayers = 0;
@@ -45,10 +45,10 @@ function register_player(username) {
 function ver_player(username) {
 	for (i = 0; i < players.length; i++) {
 		if (players[i] == username) {
-			console.log("User @"+ username +" already registered!");
+			console.log("User @" + username + " already registered!");
 			return false;
-		} else if (players[i] == author) {
-			console.log("User @"+ username +" is the author of the game!");
+		} else if (players[i] == pAuthor) {
+			console.log("User @" + username + " is the author of the game!");
 			return false;
 		}
 	}
@@ -61,7 +61,7 @@ function parse_link(link) {
 	var p = link.substring(at, at.length);
 
 	var slash = p.indexOf("/");
-	author = p.substring(1, slash);
+	pAuthor = p.substring(1, slash);
 	permlink = p.substring(slash + 1, p.length);
 }
 
@@ -70,7 +70,7 @@ function init_regist() {
 	while (registering) {
 		parse_link(document.getElementById('link').value);
 		if (ver_date(1)) { // não está a funcionar
-			ver_users_replies(author, permlink);
+			ver_users_replies(pAuthor, permlink);
 		} else {
 			console
 					.log("Cannot register player, do not pass 24H since sign-up post!");
@@ -92,7 +92,7 @@ function show_report() {
 function ver_date(time) {
 	return true;
 
-	steem.api.getContent(author, permlink, function(err, result) {
+	steem.api.getContent(pAuthor, permlink, function(err, result) {
 		console.log(err, result);
 
 		var release_time = new Date();
