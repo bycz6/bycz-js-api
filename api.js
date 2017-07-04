@@ -38,20 +38,20 @@ function register_player(username) {
 		players.push(username);
 		nPlayers++;
 		console.log("@" + username + " - Registado com sucesso!")
-	} else {
-		console.log("User already registered!");
 	}
 }
 
 // verifica se jogador está na lista
 function ver_player(username) {
-	// for (i = 0; i < players.length; i++) {
-	if (players[i] == username) {
-		return false;
-	} else if (players[i] == author) {
-		return false;
+	for (i = 0; i < players.length; i++) {
+		if (players[i] == username) {
+			console.log("User @"+ username +" already registered!");
+			return false;
+		} else if (players[i] == author) {
+			console.log("User @"+ username +" is the author of the game!");
+			return false;
+		}
 	}
-	// }
 	return true;
 }
 
