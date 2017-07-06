@@ -3,6 +3,7 @@ var permlink = "";
 var players = [ "" ];
 var nPlayers = 0;
 var registering = true;
+var nComment = 0;
 
 // *************** Funções ******************
 
@@ -22,6 +23,8 @@ function ver_users_replies(author, link) {
 		console.log(err, result);
 		if (result.length > 0) {
 			for (x = 0; x < result.length; x++) {
+				nComment++:
+				console.log("Reading comment nº" +nComment + "; from @" +result[x].author);
 				register_player(result[x].author);
 				ver_users_replies(result[x].author, result[x].permlink);
 			}
@@ -66,6 +69,7 @@ function parse_players(list) {
 	for (x = 0; x < list.length; x++) {
 		pPlayers[x] = parse_user(list[x]);
 	}
+	
 	return pPlayers;
 }
 
@@ -83,7 +87,9 @@ function parse_link(link) {
 function init_regist() {
 	while (registering) {
 		parse_link(document.getElementById('link').value);
+		console.log("Parsing game's link: " + document.getElementById('link').value );
 		if (ver_date(1)) { // não está a funcionar
+			console.log("Registering started! - " +parse_user(pAuthor) + "inited a new game! Name: " +permlink);
 			ver_users_replies(pAuthor, permlink);
 		} else {
 			console
@@ -96,16 +102,17 @@ function init_regist() {
 // verifica se o artigo foi criado à mais horas do que as passadas em
 // atributo-->
 function show_report() {
+	document.getElementById("comments").innerHTML = "Comments: " + nComment;
+	document.getElementById("nplayers").innerHTML = "Players registered: "
+		+ nPlayers;
+	document.getElementById("playerlist").innerHTML = parse_players(players);
 
-	document.getElementById("demo").innerHTML = parse_players(players);
-	document.getElementById("initest").innerHTML = "Players registered: "
-			+ nPlayers;
 }
 
 // verifica se o artigo foi criado à mais horas do que as passadas em
 // atributo
 function ver_date(time) {
-	return true;
+	return true; // ## bypass ##
 
 	steem.api.getContent(pAuthor, permlink, function(err, result) {
 		console.log(err, result);
