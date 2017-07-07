@@ -123,23 +123,17 @@ function show_report() {
 function ver_date(time) {
 	// return true; // ## bypass ##
 
-	steem.api
-			.getContent(
-					pAuthor,
-					permlink,
-					function(err, result) {
-
-						var release_time = new Date();
-						console.log("post time: " + result.created);
-						console.log("release time: " + release_time.getDate());
-						var temp = release_time + 1;
-						console.log("temp: " + temp);
-						return true;
-						if (result.created > new Date() - time) {
-							console
-									.log("Time ok! Passed"
-											+ time
-											+ " hours since the launchment of the registering!");
+	steem.api.getContent(pAuthor,permlink,function(err, result) {
+	
+	var release_time = new Date();
+	console.log("post time: " + result.created);
+	console.log("release time: " + release_time);
+	var temp = release_time + 1;
+	console.log("temp: " + temp);
+	return true;
+	
+	if (result.created > new Date() - time) {
+		console.log("Time ok! Passed" + time + " hours since the launchment of the registering!");
 							return true;
 						}
 						console
