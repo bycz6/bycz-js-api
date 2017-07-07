@@ -20,12 +20,16 @@ function player(name, team, life, money, resources) {
 // utilizadores para inscrição
 function ver_users_replies(author, link) {
 	steem.api.getContentReplies(author, link, function(err, result) {
-//		console.log(err, result);
+		// console.log(err, result);
 		if (result.length > 0) {
 			for (x = 0; x < result.length; x++) {
 				nComment++;
-				console.log("Reading comment nº" +nComment + "; from @" +result[x].author);
+				console.log("Reading comment nº" + nComment + "; from @"
+						+ result[x].author);
+
+				// acções a realizar com o comentário
 				register_player(result[x].author);
+
 				ver_users_replies(result[x].author, result[x].permlink);
 			}
 		}
@@ -86,10 +90,16 @@ function parse_link(link) {
 function init_regist() {
 	while (registering) {
 		parse_link(document.getElementById('link').value);
-		console.log("Parsing game's link: " + document.getElementById('link').value );
+		console.log("Parsing game's link: "
+				+ document.getElementById('link').value);
 		if (ver_date(1)) { // não está a funcionar
-			console.log("Registering started! - " +parse_user(pAuthor) + "inited a new game! Name: " +permlink);
+			console.log("Registering started! - " + parse_user(pAuthor)
+					+ "inited a new game! Name: " + permlink);
+
 			ver_users_replies(pAuthor, permlink);
+
+			console.log("Registering finished! " + parse_user(pAuthor))
+					+ "just copy past to your content!";
 		} else {
 			console
 					.log("Cannot register player, do not pass 24H since sign-up post!");
@@ -103,7 +113,7 @@ function init_regist() {
 function show_report() {
 	document.getElementById("comments").innerHTML = "Comments: " + nComment;
 	document.getElementById("nplayers").innerHTML = "Players registered: "
-		+ nPlayers;
+			+ nPlayers;
 	document.getElementById("playerlist").innerHTML = parse_players(players);
 
 }
@@ -111,21 +121,30 @@ function show_report() {
 // verifica se o artigo foi criado à mais horas do que as passadas em
 // atributo
 function ver_date(time) {
-	return true; // ## bypass ##
+	// return true; // ## bypass ##
 
-	steem.api.getContent(pAuthor, permlink, function(err, result) {
-		console.log(err, result);
+	steem.api
+			.getContent(
+					pAuthor,
+					permlink,
+					function(err, result) {
 
-		var release_time = new Date();
-		console.log("post time: " + result.created);
-		console.log("release time: " + release_time.getDate());
-		var temp = release_time + 1;
-		console.log("temp: " + temp);
-		return true;
-		if (result.created > new Date() - time) {
-			return true;
-		}
-//		return false;
-	});
+						var release_time = new Date();
+						console.log("post time: " + result.created);
+						console.log("release time: " + release_time.getDate());
+						var temp = release_time + 1;
+						console.log("temp: " + temp);
+						return true;
+						if (result.created > new Date() - time) {
+							console
+									.log("Time ok! Passed"
+											+ time
+											+ " hours since the launchment of the registering!");
+							return true;
+						}
+						console
+								.log("Do not pass the deadline! - Please try again in xpto horas!");
+						return false;
+					});
 
 }
