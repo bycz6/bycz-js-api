@@ -1,6 +1,6 @@
 var pAuthor = "";
 var permlink = "";
-var players = [ "" ];
+var players = [];
 var nPlayers = 0;
 var registering = true;
 var nComment = 0;
@@ -20,10 +20,10 @@ function player(name, team, life, money, resources) {
 // utilizadores para inscrição
 function ver_users_replies(author, link) {
 	steem.api.getContentReplies(author, link, function(err, result) {
-		console.log(err, result);
+//		console.log(err, result);
 		if (result.length > 0) {
 			for (x = 0; x < result.length; x++) {
-				nComment++:
+				nComment++;
 				console.log("Reading comment nº" +nComment + "; from @" +result[x].author);
 				register_player(result[x].author);
 				ver_users_replies(result[x].author, result[x].permlink);
@@ -59,7 +59,7 @@ function ver_player(username) {
 
 // coloca as @ nos utilizadores, para ficarem prontos para colar
 function parse_user(username) {
-	return "@" + username + " - ";
+	return " @" + username + " ";
 }
 
 // devolve a lista de jogadores passada em função embelezada
@@ -69,7 +69,6 @@ function parse_players(list) {
 	for (x = 0; x < list.length; x++) {
 		pPlayers[x] = parse_user(list[x]);
 	}
-	
 	return pPlayers;
 }
 
