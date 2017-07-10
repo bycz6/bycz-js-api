@@ -4,6 +4,7 @@ var players = [];
 var nPlayers = 0;
 var registering = true;
 var nComment = 0;
+var timeout = 24; // default 24 horas de registo
 
 // *************** Funções ******************
 
@@ -89,10 +90,16 @@ function parse_link(link) {
 // inicia o registo dos jogadores
 function init_regist() {
 	while (registering) {
+		if (document.getElementById('link').value != 0) {
+			timeout = document.getElementById('link').value;
+		}
+
+		console.log("Registration timout: " + timeout + " horas");
+
 		parse_link(document.getElementById('link').value);
 		console.log("Parsing game's link: "
 				+ document.getElementById('link').value);
-		if (ver_date(1)) { // não está a funcionar
+		if (ver_date(timeout)) {
 			console.log("Registering started! - " + parse_user(pAuthor)
 					+ "inited a new game! Name: " + permlink);
 
@@ -121,22 +128,17 @@ function show_report() {
 // verifica se o artigo foi criado à mais horas do que as passadas em
 // atributo
 function ver_date(time) {
-	return true; // ## bypass ##
-
 	steem.api
 			.getContent(
 					pAuthor,
 					permlink,
 					function(err, result) {
 
-						var release_time = new Date();
-						console.log("post time: " + result.created);
-						console.log("release time: " + release_time);
-						var temp = release_time + 1;
-						console.log("temp: " + temp);
-						return true;
+						var release_time = new Date(result.created);
+						console.log("Post time: " + release_time);
 
-						if (result.created > new Date() - time) {
+						if (release_time > new Date(release_time
+								.setHours(release_time.getHours() + timeout))) {
 							console
 									.log("Time ok! Passed"
 											+ time
@@ -171,7 +173,8 @@ function init_date() {
 		console.log("hora actual: " + new Date());
 		var maishora = release_time;
 		var inchour = 24;
-		console.log("aumento de 24h: " + new Date(maishora.setHours(maishora.getHours() + inchour)));
+		console.log("aumento de 24h: "
+				+ new Date(maishora.setHours(maishora.getHours() + inchour)));
 
 	});
 
