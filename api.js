@@ -165,11 +165,13 @@ function show_date() {
 function init_date() {
 	steem.api.getContent(pAuthor, permlink, function(err, result) {
 
-		var release_time = new Date();
-		console.log("post time: " + result.created);
-		console.log("release time: " + release_time);
-		var temp = release_time + 1;
-		console.log("temp: " + temp);
+		var release_time = new Date(result.created);
+		console.log("post time (blockchain): " + result.created);
+		console.log("post time (bycz): " + release_time);
+		console.log("hora actual: " + new Date());
+		var maishora = release_time;
+		var inchour = 24;
+		console.log("aumento de 24h: " + new Date(maishora.setHours(maishora.getHours() + inchour)));
 
 	});
 
