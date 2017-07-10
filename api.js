@@ -145,7 +145,7 @@ function ver_date_post(result) {
 // verifica se o artigo foi criado à mais horas do que as passadas em
 // atributo
 function ver_date(time) {
-	return true; // bypass
+	//return true; // bypass
 	steem.api
 			.getContent(
 					pAuthor,
