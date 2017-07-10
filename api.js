@@ -196,6 +196,7 @@ function init_date() {
 						if (new Date() > release_time.setHours(release_time
 								.getHours()
 								+ timeout)) {
+							console.log("mother of god!");
 							console
 									.log("Time ok! Passed"
 											+ time
