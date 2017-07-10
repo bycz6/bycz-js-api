@@ -186,9 +186,16 @@ function init_date() {
 
 						var release_time = new Date(result.created);
 						console.log("Post time: " + release_time);
+						console.log("release_time.getTime: "
+								+ release_time.getTime());
+						console.log("release_time + timeout: "
+								+ +release_time.setHours(release_time
+										.getHours()
+										+ timeout));
 
-						if (release_time.getTime() > release_time
-								.setHours(release_time.getHours() + timeout)) {
+						if (new Date() > release_time.setHours(release_time
+								.getHours()
+								+ timeout)) {
 							console
 									.log("Time ok! Passed"
 											+ time
