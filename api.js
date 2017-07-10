@@ -90,8 +90,8 @@ function parse_link(link) {
 // inicia o registo dos jogadores
 function init_regist() {
 	while (registering) {
-		if (document.getElementById('link').value != 0) {
-			timeout = document.getElementById('link').value;
+		if (document.getElementById('timeout').value != 0) {
+			timeout = document.getElementById('timeout').value;
 		}
 
 		console.log("Registration timout: " + timeout + " horas");
@@ -188,19 +188,19 @@ function init_date() {
 						console.log("Post time: " + release_time);
 						console.log("release_time.getTime: "
 								+ release_time.getTime());
-						console.log("release_time + timeout: "
-								+ +release_time.setHours(release_time
-										.getHours()
-										+ timeout));
+						var relatime = release_time.setHours(release_time
+                                                                                .getHours()
+                                                                                + timeout);
+						console.log("sem new date " +relatime);
+						var rel = new Date(relatime);
+						console.log("release_time + timeout: "+relatime);
 
 						if (new Date() > release_time.setHours(release_time
 								.getHours()
 								+ timeout)) {
 							console.log("mother of god!");
 							console
-									.log("Time ok! Passed"
-											+ time
-											+ " hours since the launchment of the registering!");
+									.log("Time ok! Passed");
 						}
 						console
 								.log("Do not pass the deadline! - Please try again in xpto horas!");
