@@ -128,6 +128,7 @@ function show_report() {
 // verifica se o artigo foi criado à mais horas do que as passadas em
 // atributo
 function ver_date(time) {
+	return true; // bypass
 	steem.api
 			.getContent(
 					pAuthor,
@@ -165,17 +166,36 @@ function show_date() {
 
 // função para extrair data de um post
 function init_date() {
-	steem.api.getContent(pAuthor, permlink, function(err, result) {
+	/*
+	 * steem.api.getContent(pAuthor, permlink, function(err, result) {
+	 * 
+	 * var release_time = new Date(result.created); console.log("post time
+	 * (blockchain): " + result.created); console.log("post time (bycz): " +
+	 * release_time); console.log("hora actual: " + new Date()); var maishora =
+	 * release_time; var inchour = 24; console.log("aumento de 24h: " + new
+	 * Date(maishora.setHours(maishora.getHours() + inchour)));
+	 * 
+	 * });
+	 */
 
-		var release_time = new Date(result.created);
-		console.log("post time (blockchain): " + result.created);
-		console.log("post time (bycz): " + release_time);
-		console.log("hora actual: " + new Date());
-		var maishora = release_time;
-		var inchour = 24;
-		console.log("aumento de 24h: "
-				+ new Date(maishora.setHours(maishora.getHours() + inchour)));
+	steem.api
+			.getContent(
+					pAuthor,
+					permlink,
+					function(err, result) {
 
-	});
+						var release_time = new Date(result.created);
+						console.log("Post time: " + release_time);
+
+						if (release_time.getTime() > release_time
+								.setHours(release_time.getHours() + timeout)) {
+							console
+									.log("Time ok! Passed"
+											+ time
+											+ " hours since the launchment of the registering!");
+						}
+						console
+								.log("Do not pass the deadline! - Please try again in xpto horas!");
+					});
 
 }
