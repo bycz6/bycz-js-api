@@ -6,6 +6,8 @@ var registering = true;
 var nComment = 0;
 var timeout = 24; // default 24 horas de registo
 
+var registerdate;
+
 // *************** Funções ******************
 
 // construtor jogador
@@ -29,7 +31,9 @@ function ver_users_replies(author, link) {
 						+ result[x].author);
 
 				// acções a realizar com o comentário
-				register_player(result[x].author);
+				if (ver_date_post(result)) {
+					register_player(result[x].author);
+				}
 
 				ver_users_replies(result[x].author, result[x].permlink);
 			}
@@ -125,6 +129,19 @@ function show_report() {
 
 }
 
+// Verifica se o post foi dentro do periodo de inscrição
+// é passado o post em atributo
+function ver_date_post(result) {
+	if (result.created < registerdate) {
+		console.log("Post from @" + result.author + " in time!");
+		return true;
+	} else {
+		console.log("Post from @" + result.author + " NOT in TIME!");
+		return false;
+	}
+
+}
+
 // verifica se o artigo foi criado à mais horas do que as passadas em
 // atributo
 function ver_date(time) {
@@ -137,18 +154,23 @@ function ver_date(time) {
 
 						var release_time = new Date(result.created);
 						console.log("Post time: " + release_time);
+						registerdate = release_time.setHours(release_time
+								.getHours()
+								+ timeout);
 
-						if (release_time > new Date(release_time
-								.setHours(release_time.getHours() + timeout))) {
+						if (new Date() > release_time.setHours(release_time
+								.getHours()
+								+ timeout)) {
 							console
-									.log("Time ok! Passed"
-											+ time
-											+ " hours since the launchment of the registering!");
+									.log("Time ok! Passed - Could start registering");
 							return true;
+						} else {
+							console
+									.log("Do not pass the deadline! - Please try again in xpto horas!");
+							return false;
+
 						}
-						console
-								.log("Do not pass the deadline! - Please try again in xpto horas!");
-						return false;
+
 					});
 
 }
@@ -189,18 +211,17 @@ function init_date() {
 						console.log("release_time.getTime: "
 								+ release_time.getTime());
 						var relatime = release_time.setHours(release_time
-                                                                                .getHours()
-                                                                                + timeout);
-						console.log("sem new date " +relatime);
+								.getHours()
+								+ timeout);
+						console.log("sem new date " + relatime);
 						var rel = new Date(relatime);
-						console.log("release_time + timeout: "+relatime);
+						console.log("release_time + timeout: " + relatime);
 
 						if (new Date() > release_time.setHours(release_time
 								.getHours()
 								+ timeout)) {
 							console.log("mother of god!");
-							console
-									.log("Time ok! Passed");
+							console.log("Time ok! Passed");
 						}
 						console
 								.log("Do not pass the deadline! - Please try again in xpto horas!");
