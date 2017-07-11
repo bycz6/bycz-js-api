@@ -96,9 +96,10 @@ function init_regist() {
 	while (registering) {
 		if (document.getElementById('timeout').value != 0) {
 			timeout = document.getElementById('timeout').value;
+			console.log("Registration timout: " + timeout + " horas");
+		} else {
+			console.log("Registration timout: " + timeout + " horas (default)");
 		}
-
-		console.log("Registration timout: " + timeout + " horas");
 
 		parse_link(document.getElementById('link').value);
 		console.log("Parsing game's link: "
@@ -145,7 +146,7 @@ function ver_date_post(result) {
 // verifica se o artigo foi criado à mais horas do que as passadas em
 // atributo
 function ver_date(time) {
-	//return true; // bypass
+	// return true; // bypass
 	steem.api
 			.getContent(
 					pAuthor,
@@ -157,6 +158,7 @@ function ver_date(time) {
 						registerdate = release_time.setHours(release_time
 								.getHours()
 								+ timeout);
+						console.log("Register end date: " + registerdate);
 
 						if (new Date() > release_time.setHours(release_time
 								.getHours()
