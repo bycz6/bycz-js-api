@@ -135,6 +135,7 @@ function show_report() {
 // Verifica se o post foi dentro do periodo de inscrição
 // é passado o post em atributo
 function ver_date_post(result) {
+
 	if (result.created < registerdate) {
 		console.log("Post from @" + result.author + " in time!");
 		return true;
@@ -148,7 +149,7 @@ function ver_date_post(result) {
 // verifica se o artigo foi criado à mais horas do que as passadas em
 // atributo
 function ver_date(time) {
-	return true; // bypass
+
 	steem.api
 			.getContent(
 					pAuthor,
@@ -162,6 +163,9 @@ function ver_date(time) {
 								+ timeout);
 						console.log("Register end date: "
 								+ new Date(registerdate));
+
+						console.log("Bypass ver_date activated!");
+						return true; // #### bypass ####
 
 						if (new Date() > release_time.setHours(release_time
 								.getHours()
