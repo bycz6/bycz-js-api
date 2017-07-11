@@ -149,7 +149,6 @@ function ver_date_post(result) {
 // verifica se o artigo foi criado à mais horas do que as passadas em
 // atributo
 function ver_date(time) {
-	var release_time = new Date();
 	steem.api.getContent(pAuthor, permlink,
 			function(err, result) {
 
