@@ -104,6 +104,7 @@ function init_regist() {
 		parse_link(document.getElementById('link').value);
 		console.log("Parsing game's link: "
 				+ document.getElementById('link').value);
+
 		if (ver_date(timeout)) {
 			console.log("Registering started! - " + parse_user(pAuthor)
 					+ "inited a new game! Name: " + permlink);
@@ -147,7 +148,7 @@ function ver_date_post(result) {
 // verifica se o artigo foi criado à mais horas do que as passadas em
 // atributo
 function ver_date(time) {
-	// return true; // bypass
+	return true; // bypass
 	steem.api
 			.getContent(
 					pAuthor,
@@ -159,7 +160,8 @@ function ver_date(time) {
 						registerdate = release_time.setHours(release_time
 								.getHours()
 								+ timeout);
-						console.log("Register end date: " + registerdate);
+						console.log("Register end date: "
+								+ new Date(registerdate));
 
 						if (new Date() > release_time.setHours(release_time
 								.getHours()
