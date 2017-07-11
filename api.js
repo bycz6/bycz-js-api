@@ -115,6 +115,7 @@ function init_regist() {
 		} else {
 			console
 					.log("Cannot register player, do not pass 24H since sign-up post!");
+			registering = false;
 		}
 
 	}
