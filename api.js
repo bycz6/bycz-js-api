@@ -7,6 +7,7 @@ var nComment = 0;
 var timeout = 24; // default 24 horas de registo
 
 var registerdate;
+var release_time;
 
 // *************** Funções ******************
 
@@ -158,34 +159,24 @@ function ver_date(time) {
 						+ timeout);
 				console.log("Register end date: " + new Date(registerdate));
 
-				console.log("Bypass ver_date activated!");
+				// console.log("Bypass ver_date activated!");
 				// return true; // #### bypass ####
 
-				// if (new Date() > release_time.setHours(release_time
-				// .getHours()
-				// + timeout)) {
-				// console
-				// .log("Time ok! Passed - Could start registering");
-				// return true;
-				// } else {
-				// console
-				// .log("Do not pass the deadline! - Please try again in xpto
-				// horas!");
-				// return false;
-				//
-				// }
+				 if (new Date() > release_time.setHours(release_time
+				 .getHours()
+				 + timeout)) {
+				 console
+				 .log("Time ok! Passed - Could start registering");
+				 return true;
+				 } else {
+				 console
+				 .log("Do not pass the deadline! - Please try again in xpto
+				 horas!");
+				 return false;
+				
+				 }
 
 			});
-
-	if (new Date() > release_time.setHours(release_time.getHours() + timeout)) {
-		console.log("Time ok! Passed - Could start registering");
-		return true;
-	} else {
-		console
-				.log("Do not pass the deadline! - Please try again in xpto horas!");
-		return false;
-
-	}
 
 }
 /*
