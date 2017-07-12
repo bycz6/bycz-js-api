@@ -106,19 +106,28 @@ function init_regist() {
 		console.log("Parsing game's link: "
 				+ document.getElementById('link').value);
 
-		if (ver_date(timeout)) {
-			console.log("Registering started! - " + parse_user(pAuthor)
-					+ "inited a new game! Name: " + permlink);
+		ver_date(timeout);
+		console.log("Registering started! - " + parse_user(pAuthor)
+				+ "inited a new game! Name: " + permlink);
 
-			ver_users_replies(pAuthor, permlink);
+		ver_users_replies(pAuthor, permlink);
 
-			console.log("Registering finished! " + parse_user(pAuthor))
-					+ "just copy past to your content!";
-		} else {
-			console
-					.log("Cannot register player, do not pass 24H since sign-up post!");
-			registering = false;
-		}
+		console.log("Registering finished! " + parse_user(pAuthor))
+				+ "just copy past to your content!";
+
+		// if (ver_date(timeout)) {
+		// console.log("Registering started! - " + parse_user(pAuthor)
+		// + "inited a new game! Name: " + permlink);
+		//
+		// ver_users_replies(pAuthor, permlink);
+		//
+		// console.log("Registering finished! " + parse_user(pAuthor))
+		// + "just copy past to your content!";
+		// } else {
+		// console
+		// .log("Cannot register player, do not pass 24H since sign-up post!");
+		// registering = false;
+		// }
 
 	}
 }
@@ -182,8 +191,6 @@ function ver_date(time) {
 				// }
 
 			});
-	return true;
-
 }
 /*
  * Zona de testes
