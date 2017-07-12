@@ -168,6 +168,7 @@ function ver_date(time) {
 	// return true;
 	steem.api.getContent(pAuthor, permlink, function(err, result) {
 
+		console.log("Timeout assigned: " + time);
 		release_time = new Date(result.created);
 		console.log("Post time: " + release_time);
 		registerdate = release_time.setHours(release_time.getHours() + time);
