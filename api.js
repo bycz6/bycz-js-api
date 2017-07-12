@@ -136,10 +136,10 @@ function show_report() {
 // Verifica se o post foi dentro do periodo de inscrição
 // é passado o post em atributo
 function ver_date_post(result) {
-	release_time = new Date(result.created);
-	console.log("Post time: " + release_time);
-	registerdate = release_time.setHours(release_time.getHours() + timeout);
-	console.log("Register end date: " + new Date(registerdate));
+	// release_time = new Date(result.created);
+	// console.log("Post time: " + release_time);
+	// registerdate = release_time.setHours(release_time.getHours() + timeout);
+	// console.log("Register end date: " + new Date(registerdate));
 
 	if (result.created < registerdate) {
 		console.log("Post from @" + result.author + " in time!");
@@ -154,38 +154,34 @@ function ver_date_post(result) {
 // verifica se o artigo foi criado à mais horas do que as passadas em
 // atributo
 function ver_date(time) {
-	return true;
-	steem.api
-			.getContent(
-					pAuthor,
-					permlink,
-					function(err, result) {
+	// return true;
+	steem.api.getContent(pAuthor, permlink,
+			function(err, result) {
 
-						release_time = new Date(result.created);
-						console.log("Post time: " + release_time);
-						registerdate = release_time.setHours(release_time
-								.getHours()
-								+ timeout);
-						console.log("Register end date: "
-								+ new Date(registerdate));
+				release_time = new Date(result.created);
+				console.log("Post time: " + release_time);
+				registerdate = release_time.setHours(release_time.getHours()
+						+ timeout);
+				console.log("Register end date: " + new Date(registerdate));
 
-						// console.log("Bypass ver_date activated!");
-						// return true; // #### bypass ####
+				// console.log("Bypass ver_date activated!");
+				return true; // #### bypass ####
 
-						if (new Date() > release_time.setHours(release_time
-								.getHours()
-								+ timeout)) {
-							console
-									.log("Time ok! Passed - Could start registering");
-							return true;
-						} else {
-							console
-									.log("Do not pass the deadline! - Please try again in xpto horas!");
-							return false;
+				// if (new Date() > release_time.setHours(release_time
+				// .getHours()
+				// + timeout)) {
+				// console
+				// .log("Time ok! Passed - Could start registering");
+				// return true;
+				// } else {
+				// console
+				// .log("Do not pass the deadline! - Please try again in xpto
+				// horas!");
+				// return false;
+				//
+				// }
 
-						}
-
-					});
+			});
 
 }
 /*
