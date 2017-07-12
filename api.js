@@ -4,7 +4,7 @@ var players = [];
 var nPlayers = 0;
 var registering = true;
 var nComment = 0;
-var timeout = 24; // default 24 horas de registo
+var timeout = 48; // default 24 horas de registo
 
 var registerdate;
 var release_time;
