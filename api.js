@@ -32,7 +32,7 @@ function ver_users_replies(author, link) {
 						+ result[x].author);
 
 				// acções a realizar com o comentário
-				if (ver_date_post(result)) {
+				if (ver_date_post(result[x])) {
 					register_player(result[x].author);
 				}
 
