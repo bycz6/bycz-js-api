@@ -165,7 +165,7 @@ function ver_date(time) {
 				console.log("Register end date: " + new Date(registerdate));
 
 				// console.log("Bypass ver_date activated!");
-				return true; // #### bypass ####
+				// return true; // #### bypass ####
 
 				// if (new Date() > release_time.setHours(release_time
 				// .getHours()
@@ -182,6 +182,7 @@ function ver_date(time) {
 				// }
 
 			});
+	return true;
 
 }
 /*
