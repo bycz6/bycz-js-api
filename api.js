@@ -165,13 +165,14 @@ function ver_date_post(result) {
 
 // cria a data de expiração do post de registo
 function ver_date(time) {
-	// return true;
+	var timeCheck = parseInt(time);
 	steem.api.getContent(pAuthor, permlink, function(err, result) {
 
-		console.log("Timeout assigned: " + time);
+		console.log("Timeout assigned: " + timeCheck);
 		release_time = new Date(result.created);
 		console.log("Post time: " + release_time);
-		registerdate = release_time.setHours(release_time.getHours() + time);
+		registerdate = release_time.setHours(release_time.getHours()
+				+ timeCheck);
 		console.log("Register end date: " + new Date(registerdate));
 
 	});
