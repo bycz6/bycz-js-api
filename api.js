@@ -149,6 +149,7 @@ function ver_date_post(result) {
 	// console.log("Post time: " + release_time);
 	// registerdate = release_time.setHours(release_time.getHours() + timeout);
 	// console.log("Register end date: " + new Date(registerdate));
+	console.log("Post from @" + result.author + " - Time: " + result.created);
 
 	if (result.created < registerdate) {
 		console.log("Post from @" + result.author + " in time!");
