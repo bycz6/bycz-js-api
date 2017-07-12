@@ -149,10 +149,11 @@ function ver_date_post(result) {
 	// console.log("Post time: " + release_time);
 	// registerdate = release_time.setHours(release_time.getHours() + timeout);
 	// console.log("Register end date: " + new Date(registerdate));
-	console.log("Post from @" + result.author + " - Time: " + result.created);
-	console.log("Register post timouts at " + registerdate);
+	console.log("Post from @" + result.author + " - Time: "
+			+ new Date(result.created));
+	console.log("Register post timouts at " + new Date(registerdate));
 
-	if (result.created < new Date(registerdate)) {
+	if (new Date(result.created) < new Date(registerdate)) {
 		console.log("Post from @" + result.author + " in time!");
 		return true;
 	} else {
