@@ -164,18 +164,16 @@ function ver_date_post(result) {
 }
 
 // cria a data de expiração do post de registo
-function ver_date(timeout) {
+function ver_date(time) {
 	// return true;
-	steem.api.getContent(pAuthor, permlink,
-			function(err, result) {
+	steem.api.getContent(pAuthor, permlink, function(err, result) {
 
-				release_time = new Date(result.created);
-				console.log("Post time: " + release_time);
-				registerdate = release_time.setHours(release_time.getHours()
-						+ timeout);
-				console.log("Register end date: " + new Date(registerdate));
+		release_time = new Date(result.created);
+		console.log("Post time: " + release_time);
+		registerdate = release_time.setHours(release_time.getHours() + time);
+		console.log("Register end date: " + new Date(registerdate));
 
-			});
+	});
 }
 /*
  * Zona de testes
