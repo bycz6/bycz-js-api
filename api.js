@@ -152,7 +152,7 @@ function ver_date_post(result) {
 	console.log("Post from @" + result.author + " - Time: " + result.created);
 	console.log("Register post timouts at " + registerdate);
 
-	if (result.created < registerdate) {
+	if (result.created < new Date(registerdate)) {
 		console.log("Post from @" + result.author + " in time!");
 		return true;
 	} else {
