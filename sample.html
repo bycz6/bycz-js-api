@@ -1,0 +1,85 @@
+<script src="//cdn.steemjs.com/lib/latest/steem.min.js"></script>
+<script type="text/javascript" src="api.js"></script>
+
+<p>sample title</p>
+
+<p>##############################################################################</p>
+
+user name:
+<input type="text" id="name" name="name">
+<br>
+Lista de buddies: (.txt)
+<input type="text" id="timeout" name="timeout" value=0>
+<br>
+
+
+
+<script>
+	var openFile = function(event) {
+		var input = event.target;
+
+		var reader = new FileReader();
+		reader.onload = function() {
+			var text = reader.result;
+			var node = document.getElementById('output');
+			node.innerText = text;
+			console.log(reader.result.substring(0, 200));
+		};
+		reader.readAsText(input.files[0]);
+	};
+</script>
+</head>
+<body>
+	<input type='file' accept='text/plain' onchange='openFile(event)'>
+	<br>
+	<div id='output'>...</div>
+
+
+
+
+	<input id="clickMe" type="button" value="Register players!"
+		onclick="init_regist();" />
+
+
+
+	<p>##############################################################################</p>
+	<p>Links uteis</p>
+	<p>
+		https://steemit.com/steem-pocalypse/@papa-pepper/steem-pocalypse-survival-game-contest-season-4-sign-up-100-sbd-already-in-the-prize-pool
+	</p>
+	<p>
+		https://steemit.com/steem-pocalypse/@papa-pepper/steem-pocalypse-survival-game-season-4-day-1-round-1-150-sbd-prize-pool-so-far
+	</p>
+
+	<p>Inscreveram-se 185 jogadores!!!</p>
+
+	<p>##############################################################################</p>
+
+	<input id="clickMe" type="button" value="Show report"
+		onclick="show_report();" />
+
+	<p id="comments"></p>
+
+	<p id="nplayers"></p>
+
+	<p id="playerlist"></p>
+
+	<p>##############################################################################</p>
+	<p>############################# - Zona de Testes -
+		#############################</p>
+
+	Teste data:
+	<input type="text" id="link" name="Link">
+	<br>
+	<input id="clickMe" type="button" value="Register players!"
+		onclick="init_date();" />
+
+	<p id="postdate"></p>
+
+	<p id="currentdate"></p>
+
+	<p id="timeoutdate"></p>
+
+
+</body>
+</html>
