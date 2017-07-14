@@ -28,7 +28,7 @@ Lista de buddies: (.txt)
 		reader.readAsText(input.files[0]);
 	};
 
-	steem.api.getDiscussionsByAuthorBeforeDate('bycz', '', new Date(), 5,
+	steem.api.getDiscussionsByAuthorBeforeDate('bycz', 'a', new Date(), 5,
 			function(err, result) {
 				console.log(err, result);
 			});
