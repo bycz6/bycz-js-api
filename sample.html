@@ -1,6 +1,7 @@
 <script src="//cdn.steemjs.com/lib/latest/steem.min.js"></script>
 <script type="text/javascript" src="scripts/api.js"></script>
 
+
 <p>sample title</p>
 
 <p>##############################################################################</p>
@@ -12,37 +13,15 @@ Lista de buddies: (.txt)
 <input type="text" id="timeout" name="timeout" value=0>
 <br>
 
+<p>Post to verify:</p>
+<input type="text" id="link" name="link"
+	placeholder="https://steemit.com/steem-pocalypse/@papa-pe..."
+	required="">
+
 
 
 <script>
-	var openFile = function(event) {
-		var input = event.target;
-
-		var reader = new FileReader();
-		reader.onload = function() {
-			var text = reader.result;
-			var node = document.getElementById('output');
-			node.innerText = text;
-			console.log(reader.result.substring(0, 200));
-		};
-		reader.readAsText(input.files[0]);
-	};
-
-	console.log("TESTE 1");
-	steem.api.getAccountHistory('bycz', 1, 0, function(err, result) {
-		console.log(err, result);
-	});
-
-	steem.api.lookupAccounts('bycz', 10, function(err, result) {
-		console.log(err, result);
-	});
-
-	steem.api.getDiscussionsByCreated({
-		"author" : "bycz",
-		"limit" : 10
-	}, function(err, result) {
-		console.log(err, result);
-	});
+	
 </script>
 </head>
 <body>
