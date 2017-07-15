@@ -3,6 +3,7 @@
  * 
  */
 var author;
+var permlink;
 
 function init_regist() {
 	parse_link(document.getElementById('link').value);
@@ -37,5 +38,5 @@ function parse_link(link) {
 
 	var slash = p.indexOf("/");
 	author = p.substring(1, slash);
-	var permlink = p.substring(slash + 1, p.length);
+	permlink = p.substring(slash + 1, p.length);
 }
