@@ -32,9 +32,7 @@ function init_regist() {
 			}
 		}
 	});
-	console
-			.log("Nº de buddies maus : "
-					+ (buddies_list.length - still_buddies));
+
 }
 
 var openFile = function(event) {
@@ -72,4 +70,12 @@ function read_users_from_file(file) {
 			'andreanoronha', 'mysterion' ]
 
 	console.log("Buddies list size: " + buddies_list.length);
+}
+
+// verifica se o artigo foi criado à mais horas do que as passadas em
+
+function show_report() {
+	document.getElementById("comments").innerHTML = "Nº de buddies maus : "
+			+ (buddies_list.length - still_buddies);
+
 }
