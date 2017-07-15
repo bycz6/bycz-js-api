@@ -17,13 +17,15 @@ function init_regist() {
 		console.log("Number of upvotes: " + result.net_votes);
 
 		for (x = 0; x < buddies_list.length; x++) {
-			console.log("Checking buddie : @" + buddies_list[x]);
+			console.log("X = " + x + "Checking buddie : @" + buddies_list[x]);
 			for (y = 0; y < result.net_votes; y++) {
-				console.log("Checking buddie : @" + buddies_list[x] + "for @"
+				console.log("X = " + x + ",Y = " + x + "Checking buddie : @"
+						+ buddies_list[x] + "for @"
 						+ result.active_votes[y].voter);
 
 				if (result.active_votes[y].voter == buddies_list[x]) {
 					console.log("@" + result.active_votes[x].voter + " OK");
+					break;
 				}
 			}
 		}
