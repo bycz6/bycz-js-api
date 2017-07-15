@@ -36,6 +36,13 @@ Lista de buddies: (.txt)
 	steem.api.lookupAccounts('bycz', 10, function(err, result) {
 		console.log(err, result);
 	});
+
+	steem.api.getDiscussionsByCreated({
+		"author" : "bycz",
+		"limit" : 10
+	}, function(err, result) {
+		console.log(err, result);
+	});
 </script>
 </head>
 <body>
