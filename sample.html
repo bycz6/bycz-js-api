@@ -28,11 +28,11 @@ Lista de buddies: (.txt)
 		reader.readAsText(input.files[0]);
 	};
 
-	steem.api.getDiscussionsByAuthorBeforeDate('bycz',
-			'how-to-create-a-makerspace-create-a-social-manufacturing-space',
-			new Date(), 10, function(err, result) {
-				console.log(err, result);
-			});
+	steem.api.getAccountHistory('bycz', , 10, function(err, result) {
+		  console.log(err, result);
+		});
+	
+	
 </script>
 </head>
 <body>
