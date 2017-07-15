@@ -16,12 +16,11 @@ function init_regist() {
 				+ permlink);
 		console.log("Number of upvotes: " + result.net_votes);
 
-		for (x = 0; x < result.net_votes; x++) {
-			for (y = 0; y < buddies_list.length; y++) {
-				if (result.active_votes[x].voter == buddies_list[y]) {
-					console.log("@" + result.active_votes[x].voter + "OK");
-				} else {
-					console.log("@" + result.active_votes[x].voter + "FU");
+		for (x = 0; x < buddies_list.length; x++) {
+			for (y = 0; y < result.net_votes; y++) {
+
+				if (result.active_votes[y].voter == buddies_list[x]) {
+					console.log("@" + result.active_votes[x].voter + " OK");
 				}
 			}
 		}
