@@ -19,12 +19,12 @@ function init_regist() {
 		for (x = 0; x < buddies_list.length; x++) {
 			console.log("X = " + x + "Checking buddie : @" + buddies_list[x]);
 			for (y = 0; y < result.net_votes; y++) {
-				console.log("X = " + x + ",Y = " + x + "Checking buddie : @"
+				console.log("X = " + x + ",Y = " + y + "Checking buddie : @"
 						+ buddies_list[x] + "for @"
 						+ result.active_votes[y].voter);
 
 				if (result.active_votes[y].voter == buddies_list[x]) {
-					console.log("@" + result.active_votes[x].voter + " OK");
+					console.log("@" + buddies_list[x] + " OK");
 					break;
 				}
 			}
