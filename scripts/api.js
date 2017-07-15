@@ -5,6 +5,7 @@
 var author;
 var permlink;
 var buddies_list;
+var still_buddies = 0;
 
 function init_regist() {
 	parse_link(document.getElementById('link').value);
@@ -25,11 +26,15 @@ function init_regist() {
 
 				if (result.active_votes[y].voter == buddies_list[x]) {
 					console.log("@" + buddies_list[x] + " OK");
+					still_buddies++;
 					break;
 				}
 			}
 		}
 	});
+	console
+			.log("Nº de buddies maus : "
+					+ (buddies_list.length - still_buddies));
 }
 
 var openFile = function(event) {
