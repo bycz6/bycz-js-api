@@ -17,7 +17,7 @@ function init_regist() {
 		console.log("Number of upvotes: " + result.net_votes);
 
 		for (x = 0; x < buddies_list.length; x++) {
-			for (y = 0; y < result.net_votes + 1; y++) {
+			for (y = 0; y < result.net_votes; y++) {
 
 				if (result.active_votes[y].voter == buddies_list[x]) {
 					console.log("@" + result.active_votes[x].voter + " OK");
