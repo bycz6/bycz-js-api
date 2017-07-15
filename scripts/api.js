@@ -9,10 +9,10 @@ function init_regist() {
 
 	steem.api.getContent(author, permlink, function(err, result) {
 		console.log(err, result);
-		console.log("Init reading contente from @" +author " post-->" +permlink);
-		console.log("Number of upvotes: "+result.net_votes);
-		
-		
+		console.log("Init reading contente from @" + author + " post-->"
+				+ permlink);
+		console.log("Number of upvotes: " + result.net_votes);
+
 	});
 }
 
