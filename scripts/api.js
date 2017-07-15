@@ -6,5 +6,5 @@ var author;
 
 function init_regist() {
 	author = document.getElementById('name').value;
-	console.log("User name iput: @" + author);
+	console.log("User name input: @" + author);
 }
