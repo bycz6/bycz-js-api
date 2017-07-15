@@ -28,7 +28,28 @@ Lista de buddies: (.txt)
 		reader.readAsText(input.files[0]);
 	};
 
-	steem.api.getAccountHistory('bycz', 20, 10, function(err, result) {
+	console.log("TESTE 1");
+	steem.api.getAccountHistory('bycz', 1, 0, function(err, result) {
+		console.log(err, result);
+	});
+
+	console.log("TESTE 2");
+	steem.api.getAccountHistory('bycz', 0, 0, function(err, result) {
+		console.log(err, result);
+	});
+
+	console.log("TESTE 3");
+	steem.api.getAccountHistory('bycz', 999999, 0, function(err, result) {
+		console.log(err, result);
+	});
+
+	console.log("TESTE 4");
+	steem.api.getAccountHistory('bycz', 100, 0, function(err, result) {
+		console.log(err, result);
+	});
+
+	console.log("TESTE 5");
+	steem.api.getAccountHistory('bycz', 0, -1, function(err, result) {
 		console.log(err, result);
 	});
 </script>
