@@ -28,11 +28,9 @@ Lista de buddies: (.txt)
 		reader.readAsText(input.files[0]);
 	};
 
-	steem.api.getAccountHistory('bycz', , 10, function(err, result) {
-		  console.log(err, result);
-		});
-	
-	
+	steem.api.getAccountHistory('bycz', 0, 10, function(err, result) {
+		console.log(err, result);
+	});
 </script>
 </head>
 <body>
