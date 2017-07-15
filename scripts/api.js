@@ -4,7 +4,8 @@
  */
 var author;
 var permlink;
-var buddies_list;
+var buddies_list = [];
+var bad_buddies_list = [];
 var still_buddies = 0;
 
 function init_regist() {
@@ -28,6 +29,9 @@ function init_regist() {
 					console.log("@" + buddies_list[x] + " OK");
 					still_buddies++;
 					break;
+				}
+				if (y == 24) {
+					bad_buddies_list.push(buddies_list[x]);
 				}
 			}
 		}
@@ -77,5 +81,6 @@ function read_users_from_file(file) {
 function show_report() {
 	document.getElementById("comments").innerHTML = "Nº de buddies maus : "
 			+ (buddies_list.length - still_buddies);
+	document.getElementById("playerlist").innerHTML = bad_buddies_list;
 
 }
