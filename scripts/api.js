@@ -70,12 +70,12 @@ function parse_link(link) {
 // cria uma lista de utilizadores a partir de um ficheiro
 function read_users_from_file(file) {
 
-	console.log(file.value);
-	var x = file.value;
-
+	var x = file.files[0];
+	console.log("File" + x);
+	
 	var reader = new FileReader();
 	reader.onload = function(event) {
-		console.log("reader: " + event.target.result);
+		console.log("reader: " + event.target.result " + length: " +event.target.result.length);
 	}
 	reader.readAsText(file.files[0]);
 	// var fs = require("fs");
