@@ -39,7 +39,19 @@ function init_regist() {
 
 }
 
+// passa conteudo do ficheiro txt para uma matriz
+function openFile(event) {
+	var input = event.target;
 
+	var reader = new FileReader();
+	reader.onload = function() {
+		var text = reader.result;
+		var node = document.getElementById('output');
+		node.innerText = text;
+		console.log(reader.result.substring(0, 500));
+	};
+	reader.readAsText(input.files[0]);
+};
 
 // extrai do link do artigo o autor e o permlink
 // parse_link(document.getElementById('link').value); ---> put where to run it
