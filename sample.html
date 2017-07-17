@@ -6,10 +6,6 @@
 
 <p>##############################################################################</p>
 
-
-<input type="text" id="timeout" name="timeout" value=0>
-<br>
-
 <p>Post to verify:</p>
 <input type="text" id="link" name="link">
 <br>
@@ -17,50 +13,50 @@
 <input type='file' accept='text/plain' id='file'
 	onchange='openFile(event)'>
 <br>
+<div id='output'>
 
+	<script>
+		var openFile = function(event) {
+			var input = event.target;
 
-<script>
-	var openFile = function(event) {
-		var input = event.target;
-
-		var reader = new FileReader();
-		reader.onload = function() {
-			var text = reader.result;
-			var node = document.getElementById('output');
-			node.innerText = text;
-			console.log(reader.result.substring(0, 200));
+			var reader = new FileReader();
+			reader.onload = function() {
+				var text = reader.result;
+				var node = document.getElementById('output');
+				node.innerText = text;
+				console.log(reader.result.substring(0, 200));
+			};
+			reader.readAsText(input.files[0]);
 		};
-		reader.readAsText(input.files[0]);
-	};
-</script>
-</head>
-<body>
+	</script>
+	</head>
+	<body>
 
 
 
 
-	<input id="clickMe" type="button" value="Check buddies!"
-		onclick="init_regist();" />
+		<input id="clickMe" type="button" value="Check buddies!"
+			onclick="init_regist();" />
 
 
 
 
 
-	<p>##############################################################################</p>
-	<p>Links uteis</p>
+		<p>##############################################################################</p>
+		<p>Links uteis</p>
 
-	<p>##############################################################################</p>
+		<p>##############################################################################</p>
 
-	<input id="clickMe" type="button" value="Show report"
-		onclick="show_report();" />
+		<input id="clickMe" type="button" value="Show report"
+			onclick="show_report();" />
 
-	<p id="comments"></p>
+		<p id="comments"></p>
 
-	<p id="nplayers"></p>
+		<p id="nplayers"></p>
 
-	<p id="playerlist"></p>
+		<p id="playerlist"></p>
 
 
 
-</body>
-</html>
+	</body>
+	</html>
