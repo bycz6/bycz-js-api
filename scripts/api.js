@@ -72,10 +72,11 @@ function read_users_from_file(file) {
 
 	var x = file.files[0];
 	console.log("File" + x);
-	
+
 	var reader = new FileReader();
 	reader.onload = function(event) {
-		console.log("reader: " + event.target.result " + length: " +event.target.result.length);
+		console.log("reader: " + event.target.result + " + length: "
+				+ event.target.result.length);
 	}
 	reader.readAsText(file.files[0]);
 	// var fs = require("fs");
