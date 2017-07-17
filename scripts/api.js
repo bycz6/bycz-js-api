@@ -40,8 +40,11 @@ function init_regist() {
 }
 
 // passa conteudo do ficheiro txt para uma matriz
-var openFile = function(event) {
-	var input = event.target;
+function openFile() {
+
+	var x = document.getElementById("file");
+	console.log(x);
+	var input = x.target;
 
 	var reader = new FileReader();
 	reader.onload = function() {
