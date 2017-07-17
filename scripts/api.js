@@ -75,14 +75,14 @@ function read_users_from_file(file) {
 
 	var reader = new FileReader();
 	reader.onload = function(event) {
-		console.log(event.target.result);
+		console.log("reader: " + event.target.result);
 	}
 	reader.readAsText(file.files[0]);
 	// var fs = require("fs");
 	// var text = fs.readFileSync(file).toString('utf-8');
 
 	var textByLine = file.toString('utf-8').split("\n")
-	console.log(textByLine);
+	console.log("textbyline" + textByLine);
 
 	buddies_list = [ 'pavezi', 'thinkagain', 'userperson321', 'cryptopet',
 			'chinuxristo', 'kelvanis', 'soo.chong163', 'cgame', 'arunava',
