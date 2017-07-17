@@ -77,7 +77,7 @@ function read_users_from_file(file) {
 	reader.onload = function(event) {
 		console.log(event.target.result);
 	}
-	reader.readAsText(file);
+	reader.readAsText(file.files[0]);
 	// var fs = require("fs");
 	// var text = fs.readFileSync(file).toString('utf-8');
 
