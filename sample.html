@@ -6,16 +6,16 @@
 
 <p>##############################################################################</p>
 
-user name:
-<input type="text" id="name" name="name">
-<br>
-Lista de buddies: (.txt)
+
 <input type="text" id="timeout" name="timeout" value=0>
 <br>
 
 <p>Post to verify:</p>
 <input type="text" id="link" name="link">
-
+<br>
+<p>Lista de buddies: (.txt)</p>
+<input type='file' accept='text/plain' id='file'
+	onchange='openFile(event)'>
 <br>
 
 
@@ -36,9 +36,7 @@ Lista de buddies: (.txt)
 </head>
 <body>
 
-	<input type='file' accept='text/plain' id='file'
-		onchange='openFile(event)'>
-	<br>
+
 
 
 	<input id="clickMe" type="button" value="Check buddies!"
