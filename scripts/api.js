@@ -54,7 +54,7 @@ function openFile() {
 		console.log(reader.result.substring(0, 500));
 	};
 	reader.readAsText(input.files[0]);
-};
+}
 
 // extrai do link do artigo o autor e o permlink
 // parse_link(document.getElementById('link').value); ---> put where to run it
