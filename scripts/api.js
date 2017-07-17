@@ -70,8 +70,8 @@ function parse_link(link) {
 // cria uma lista de utilizadores a partir de um ficheiro
 function read_users_from_file(file) {
 
-	console.log(file);
-
+	console.log(file.value);
+	var x = file.value;
 	// var fs = require("fs");
 	// var text = fs.readFileSync(file).toString('utf-8');
 
