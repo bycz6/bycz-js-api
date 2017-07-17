@@ -77,6 +77,8 @@ function read_users_from_file(file) {
 	reader.onload = function(event) {
 		console.log("reader: " + event.target.result + " + length: "
 				+ event.target.result.length);
+		
+		console.log("Textbyreaee: " + event.target.result)
 	}
 	reader.readAsText(file.files[0]);
 	// var fs = require("fs");
