@@ -13,50 +13,50 @@
 <input type='file' accept='text/plain' id='file'
 	onchange='openFile(event)'>
 <br>
-<div id='output'>
 
-	<script>
-		var openFile = function(event) {
-			var input = event.target;
+<script>
+	var openFile = function(event) {
+		var input = event.target;
 
-			var reader = new FileReader();
-			reader.onload = function() {
-				var text = reader.result;
-				var node = document.getElementById('output');
-				node.innerText = text;
-				console.log(reader.result.substring(0, 200));
-			};
-			reader.readAsText(input.files[0]);
+		var reader = new FileReader();
+		reader.onload = function() {
+			var text = reader.result;
+			var node = document.getElementById('output');
+			node.innerText = text;
+			console.log(reader.result.substring(0, 200));
 		};
-	</script>
-	</head>
-	<body>
+		reader.readAsText(input.files[0]);
+	};
+</script>
+</head>
+<body>
+
+	<div id='output'></div>
+
+
+
+	<input id="clickMe" type="button" value="Check buddies!"
+		onclick="init_regist();" />
 
 
 
 
-		<input id="clickMe" type="button" value="Check buddies!"
-			onclick="init_regist();" />
 
+	<p>##############################################################################</p>
+	<p>Links uteis</p>
 
+	<p>https://steemit.com/steemit/@bycz/day-4---garden-decoration---starting-to-put-the-synthetic-grass</p>
 
+	<p>##############################################################################</p>
 
+	<input id="clickMe" type="button" value="Show report"
+		onclick="show_report();" />
 
-		<p>##############################################################################</p>
-		<p>Links uteis</p>
+	<p id="comments"></p>
 
-		<p>##############################################################################</p>
+	<p id="nplayers"></p>
 
-		<input id="clickMe" type="button" value="Show report"
-			onclick="show_report();" />
+	<p id="playerlist"></p>
 
-		<p id="comments"></p>
-
-		<p id="nplayers"></p>
-
-		<p id="playerlist"></p>
-
-
-
-	</body>
-	</html>
+</body>
+</html>
