@@ -69,9 +69,13 @@ function parse_link(link) {
 
 // cria uma lista de utilizadores a partir de um ficheiro
 function read_users_from_file(file) {
-	var fs = require("fs");
-	var text = fs.readFileSync(file).toString('utf-8');
-	var textByLine = text.split("\n")
+
+	var x = document.getElementById("file");
+	console.log(x);
+
+	// var fs = require("fs");
+	// var text = fs.readFileSync(file).toString('utf-8');
+	var textByLine = x.toString('utf-8').split("\n")
 	console.log(textByLine);
 
 	buddies_list = [ 'pavezi', 'thinkagain', 'userperson321', 'cryptopet',
