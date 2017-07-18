@@ -70,9 +70,9 @@ function parse_link(link) {
 // cria uma lista de utilizadores a partir de um ficheiro
 function read_users_from_file(file) {
 
-	// var x = file.files[0];
-	// console.log("File" + x);
-
+	var x = file.files[0];
+	console.log("File " + x);
+	console.log("res " + x.result + " ! " + x.result.length);
 	// var reader = new FileReader();
 	// reader.onload = function(event) {
 	// console.log("reader: " + event.target.result + " + length: "
@@ -84,7 +84,7 @@ function read_users_from_file(file) {
 	// var fs = require("fs");
 	// var text = fs.readFileSync(file).toString('utf-8');
 
-	var textByLine = file.toString('utf-8').split("\n")
+	var textByLine = file.toString('utf-8').split()
 	console.log("textbyline n_buddies? - " + textByLine.length);
 	console.log("yh" + textByLine);
 
