@@ -84,7 +84,7 @@ function read_users_from_file(file) {
 	// var fs = require("fs");
 	// var text = fs.readFileSync(file).toString('utf-8');
 
-	var buddies_list = file.toString('utf-8').split("\n")
+	buddies_list = file.toString('utf-8').split("\n")
 	// console.log("textbyline n_buddies? - " + textByLine.length);
 
 	// buddies_list = [ 'pavezi', 'thinkagain', 'userperson321', 'cryptopet',
