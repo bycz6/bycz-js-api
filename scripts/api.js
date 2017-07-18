@@ -77,23 +77,23 @@ function read_users_from_file(file) {
 	reader.onload = function(event) {
 		console.log("reader: " + event.target.result + " + length: "
 				+ event.target.result.length);
-
+		buddies_list = event.target.result;
 		console.log("Textbyreaee: " + event.target.result)
 	}
 	reader.readAsText(file.files[0]);
 	// var fs = require("fs");
 	// var text = fs.readFileSync(file).toString('utf-8');
 
-	var textByLine = file.toString('utf-8').split("\n")
-	console.log("textbyline n_buddies? - " + textByLine.length);
+	// var textByLine = file.toString('utf-8').split("\n")
+	// console.log("textbyline n_buddies? - " + textByLine.length);
 
-	buddies_list = [ 'pavezi', 'thinkagain', 'userperson321', 'cryptopet',
-			'chinuxristo', 'kelvanis', 'soo.chong163', 'cgame', 'arunava',
-			'badastroza', 'rzzk', 'floprime', 'sportsenthusiast', 'sam99',
-			'yushkov', 'Zebbad', 'luxurious', 'iobates', 'timbalabuch',
-			'carlos-fernando', 'invest4you', 'hzavarce', 'harja', 'bitrus2yk',
-			'makshay5', 'munchmunch', 'polaleye50', 'robertolopez',
-			'andreanoronha', 'mysterion' ]
+	// buddies_list = [ 'pavezi', 'thinkagain', 'userperson321', 'cryptopet',
+	// 'chinuxristo', 'kelvanis', 'soo.chong163', 'cgame', 'arunava',
+	// 'badastroza', 'rzzk', 'floprime', 'sportsenthusiast', 'sam99',
+	// 'yushkov', 'Zebbad', 'luxurious', 'iobates', 'timbalabuch',
+	// 'carlos-fernando', 'invest4you', 'hzavarce', 'harja', 'bitrus2yk',
+	// 'makshay5', 'munchmunch', 'polaleye50', 'robertolopez',
+	// 'andreanoronha', 'mysterion' ]
 
 	console.log("Buddies list size: " + buddies_list.length);
 }
