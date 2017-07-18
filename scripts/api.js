@@ -70,22 +70,23 @@ function parse_link(link) {
 // cria uma lista de utilizadores a partir de um ficheiro
 function read_users_from_file(file) {
 
-	var x = file.files[0];
-	console.log("File" + x);
+	// var x = file.files[0];
+	// console.log("File" + x);
 
-	var reader = new FileReader();
-	reader.onload = function(event) {
-		console.log("reader: " + event.target.result + " + length: "
-				+ event.target.result.length);
-		buddies_list = event.target.result;
-		console.log("Textbyreaee: " + event.target.result)
-	}
-	reader.readAsText(file.files[0]);
+	// var reader = new FileReader();
+	// reader.onload = function(event) {
+	// console.log("reader: " + event.target.result + " + length: "
+	// + event.target.result.length);
+	// // buddies_list = event.target.result;
+	// console.log("Textbyreaee: " + event.target.result)
+	// }
+	// reader.readAsText(file.files[0]);
 	// var fs = require("fs");
 	// var text = fs.readFileSync(file).toString('utf-8');
 
-	// var textByLine = file.toString('utf-8').split("\n")
-	// console.log("textbyline n_buddies? - " + textByLine.length);
+	var textByLine = file.toString('utf-8').split("\n")
+	console.log("textbyline n_buddies? - " + textByLine.length);
+	console.log("yh" + textByLine);
 
 	// buddies_list = [ 'pavezi', 'thinkagain', 'userperson321', 'cryptopet',
 	// 'chinuxristo', 'kelvanis', 'soo.chong163', 'cgame', 'arunava',
