@@ -78,14 +78,15 @@ function read_users_from_file(file) {
 		console.log("reader: " + event.target.result + " + length: "
 				+ event.target.result.length);
 		
-		console.log("Textbyreaee: " + event.target.result)
+
+				console.log("Textbyreaee: " + event.target.result)
 	}
 	reader.readAsText(file.files[0]);
 	// var fs = require("fs");
 	// var text = fs.readFileSync(file).toString('utf-8');
 
 	var textByLine = file.toString('utf-8').split("\n")
-	console.log("textbyline" + textByLine);
+	console.log("textbyline n_buddies? - " + textByLine.length);
 
 	buddies_list = [ 'pavezi', 'thinkagain', 'userperson321', 'cryptopet',
 			'chinuxristo', 'kelvanis', 'soo.chong163', 'cgame', 'arunava',
