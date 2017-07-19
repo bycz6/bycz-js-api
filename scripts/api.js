@@ -71,9 +71,19 @@ function parse_link(link) {
 // cria uma lista de utilizadores a partir de um ficheiro
 function read_users_from_file(file) {
 
-	var x = file.files[0];
-	console.log("File " + x);
-	console.log("res " + x.result + " ! " + x.result.length);
+	var reader = new FileReader();
+	reader.onload = function(event) {
+		var text = reader.target.result;
+		console.log("TEXT. : " + text);
+		var node = document.getElementById('output');
+		node.innerText = text;
+		console.log(reader.result.substring(0, 500));
+	};
+	reader.readAsText(input.files[0]);
+
+	// var x = file.files[0];
+	// console.log("File " + x);
+	// console.log("res " + x.result + " ! " + x.result.length);
 	// var reader = new FileReader();
 	// reader.onload = function(event) {
 	// console.log("reader: " + event.target.result + " + length: "
