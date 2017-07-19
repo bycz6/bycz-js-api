@@ -47,8 +47,9 @@ function openFile() {
 	var input = x.target;
 
 	var reader = new FileReader();
-	reader.onload = function() {
-		var text = reader.result;
+	reader.onload = function(event) {
+		var text = reader.target.result;
+		console.log("TEXT. : " + text);
 		var node = document.getElementById('output');
 		node.innerText = text;
 		console.log(reader.result.substring(0, 500));
