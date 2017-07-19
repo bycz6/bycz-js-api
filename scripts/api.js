@@ -79,7 +79,7 @@ function read_users_from_file(file) {
 		node.innerText = text;
 		console.log(reader.result.substring(0, 500));
 	};
-	reader.readAsText(input.files[0]);
+	// reader.readAsText(input.files[0]);
 
 	// var x = file.files[0];
 	// console.log("File " + x);
